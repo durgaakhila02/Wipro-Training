@@ -1,5 +1,0 @@
-<Solution>
-  <Project Path="ReportSystem.App/ReportSystem.App.csproj" />
-  <Project Path="ReportSystem.Tests/ReportSystem.Tests.csproj" />
-  <Project Path="ReportSystem/ReportSystem.csproj" />
-</Solution>
