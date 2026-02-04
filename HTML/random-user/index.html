@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random User Fetch</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .user-card {
+            margin-top: 30px;
+        }
+
+        img {
+            border-radius: 50%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Random User Information</h2>
+
+    <button onclick="getUser()">Get Random User</button>
+
+    <div class="user-card" id="user"></div>
+
+    <script>
+        function getUser() {
+            fetch("https://randomuser.me/api/")
+                .then(response => response.json())
+                .then(data => {
+                    const user = data.results[0];
+
+                    const fullName = user.name.first + " " + user.name.last;
+                    const email = user.email;
+                    const image = user.picture.large;
+
+                    document.getElementById("user").innerHTML = `
+                        <img src="${image}" alt="User Image">
+                        <h3>${fullName}</h3>
+                        <p>${email}</p>
+                    `;
+                })
+                .catch(error => {
+                    console.log(error);
+                    alert("Error fetching user data");
+                });
+        }
+    </script>
+
+</body>
+</html>
